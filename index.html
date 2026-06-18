@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentaku - Software Rental Tenda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .btn {
+            background: white;
+            color: #667eea;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .btn-wa {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .bg-gray {
+            background: #f9fafb;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+        
+        .problem {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .problem-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ef4444;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background: #f9fafb;
+            padding: 40px;
+            border-radius: 15px;
+        }
+        
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .pricing-card {
+            background: #f9fafb;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <div class="logo">⛺ Tentaku</div>
+        <a href="#demo" class="btn">Demo Gratis</a>
+    </div>
+</div>
+
+<div class="hero">
+    <div class="container">
+        <h1>Kelola Booking, Stok, dan Invoice<br>Rental Tenda dalam Satu Tempat</h1>
+        <p>Masih mencatat pesanan lewat WhatsApp dan Excel?</p>
+        <p>Tentaku membantu usaha rental tenda, kursi, meja, panggung, sound system,<br>dan perlengkapan acara mengelola operasional lebih rapi tanpa ribet.</p>
+        <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20demo%20Tentaku" class="btn-wa">💬 Chat WhatsApp Sekarang</a>
+    </div>
+</div>
+
+<div class="section bg-gray">
+    <div class="container">
+        <h2>Masalah yang Sering Terjadi</h2>
+        <div class="problem">
+            <div class="problem-item">❌ Jadwal acara bentrok</div>
+            <div class="problem-item">❌ Barang ternyata sudah dipakai di acara lain</div>
+            <div class="problem-item">❌ Sulit mengetahui stok yang masih tersedia</div>
+            <div class="problem-item">❌ Invoice dibuat manual berulang kali</div>
+            <div class="problem-item">❌ Tim lapangan bingung barang yang harus dibawa</div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <h2>Fitur Utama</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>📅 Booking Management</h3>
+                <p>Catat semua pesanan dalam satu sistem. Data customer, tanggal acara, lokasi, dan status booking.</p>
+            </div>
+            <div class="card">
+                <h3>📦 Inventory Tracking</h3>
+                <p>Pantau stok secara otomatis. Sistem akan memberi peringatan jika stok tidak mencukupi.</p>
+            </div>
+            <div class="card">
+                <h3>🧾 Invoice Otomatis</h3>
+                <p>Buat invoice PDF hanya dalam beberapa klik. Nomor otomatis, siap kirim.</p>
+            </div>
+            <div class="card">
+                <h3>🚚 Surat Jalan</h3>
+                <p>Tim lapangan tahu persis barang yang harus dibawa. Kurangi kesalahan pengiriman.</p>
+            </div>
+            <div class="card">
+                <h3>📆 Kalender Booking</h3>
+                <p>Lihat seluruh jadwal acara dalam tampilan kalender. Tidak perlu cari-cari di WhatsApp.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section bg-gray">
+    <div class="container">
+        <h2>Harga</h2>
+        <div class="grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price">Rp149.000</div>
+                <p>/ bulan</p>
+                <p>✓ Booking<br>✓ Inventaris<br>✓ Kalender</p>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Pro</h3>
+                <div class="price">Rp399.000</div>
+                <p>/ bulan</p>
+                <p>✓ Semua fitur Starter<br>✓ Invoice<br>✓ Surat Jalan<br>✓ Laporan</p>
+            </div>
+            <div class="pricing-card">
+                <h3>Business</h3>
+                <div class="price">Rp999.000</div>
+                <p>/ bulan</p>
+                <p>✓ Semua fitur Pro<br>✓ Multi User<br>✓ Multi Cabang</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <h2>Testimoni</h2>
+        <div class="grid">
+            <div class="testimonial">
+                <p><em>"Sekarang kami tidak lagi khawatir jadwal bentrok. Semua order terlihat jelas."</em></p>
+                <p style="margin-top:15px;"><strong>— Budi</strong><br><small>Rental Tenda</small></p>
+            </div>
+            <div class="testimonial">
+                <p><em>"Admin jauh lebih cepat membuat invoice dan surat jalan."</em></p>
+                <p style="margin-top:15px;"><strong>— Hendra</strong><br><small>Penyedia Perlengkapan Acara</small></p>
+            </div>
+            <div class="testimonial">
+                <p><em>"Stok kursi dan tenda lebih mudah dipantau."</em></p>
+                <p style="margin-top:15px;"><strong>— Rizal</strong><br><small>Event Equipment Rental</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section bg-gray" id="demo">
+    <div class="container">
+        <h2>Request Demo Gratis</h2>
+        <form id="demoForm">
+            <div class="form-group">
+                <label>Nama Usaha:</label>
+                <input type="text" id="businessName" required>
+            </div>
+            <div class="form-group">
+                <label>Nama Pemilik:</label>
+                <input type="text" id="ownerName" required>
+            </div>
+            <div class="form-group">
+                <label>Nomor WhatsApp:</label>
+                <input type="tel" id="whatsapp" placeholder="08xx xxxx xxxx" required>
+            </div>
+            <div class="form-group">
+                <label>Kota:</label>
+                <input type="text" id="city" required>
+            </div>
+            <div class="form-group">
+                <label>Jumlah Booking per Bulan:</label>
+                <select id="bookings" required>
+                    <option value="">Pilih...</option>
+                    <option>1-10 booking</option>
+                    <option>11-30 booking</option>
+                    <option>31-50 booking</option>
+                    <option>50+ booking</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">KIRIM</button>
+        </form>
+    </div>
+</div>
+
+<div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+    <div class="container">
+        <h2 style="color:white;">Demo Gratis 15 Menit</h2>
+        <p>Lihat bagaimana Tentaku membantu usaha rental Anda menjadi lebih rapi dan terorganisir.</p>
+        <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20demo%20Tentaku" class="btn-wa">💬 CHAT WHATSAPP SEKARANG</a>
+    </div>
+</div>
+
+<a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20demo%20Tentaku" class="floating-wa">💬</a>
+
+<script>
+document.getElementById('demoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var bn = document.getElementById('businessName').value;
+    var on = document.getElementById('ownerName').value;
+    var wa = document.getElementById('whatsapp').value;
+    var ct = document.getElementById('city').value;
+    var bk = document.getElementById('bookings').value;
+    var msg = 'Halo, saya ingin demo Tentaku%0A%0ANama Usaha: ' + bn + '%0ANama: ' + on + '%0AWhatsApp: ' + wa + '%0AKota: ' + ct + '%0ABooking/bulan: ' + bk;
+    window.open('https://wa.me/6281234567890?text=' + msg, '_blank');
+});
+</script>
+
+</body>
+</html>
